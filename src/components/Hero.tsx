@@ -18,12 +18,20 @@ import watch_silver from "../assets/watches/watch_silver.png";
 import watch_emerald from "../assets/watches/watch_emerald.png";
 import watch_ruby from "../assets/watches/watch_ruby.png";
 
-export const Hero = () => {
+import btn_left from "../assets/icons/btn_left.svg";
+import btn_right from "../assets/icons/btn_right.svg";
+
+// interfaces
+interface IHero {
+  setBgColor: (color: string) => void;
+}
+
+export const Hero = ({ setBgColor }: IHero) => {
   const socials = [facebook, twitter, youtube];
   const watches = [watch_gold, watch_silver, watch_emerald, watch_ruby];
 
   return (
-    <section>
+    <section className="pt-[114px]">
       <Container>
         <div className="flex items-center justify-between">
           <div>
@@ -55,16 +63,48 @@ export const Hero = () => {
             <Swiper
               modules={[Navigation]}
               slidesPerView={1}
-              navigation
-              onSlideChange={() => console.log("slide change")}
-              onSwiper={(swiper) => console.log(swiper)}
-              style={{ width: "500px" }}
+              navigation={{
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              }}
+              onSlideChange={(swiper) => {
+                switch (swiper.activeIndex) {
+                  case 0:
+                    setBgColor("main-bg-gold");
+                    break;
+                  case 1:
+                    setBgColor("main-bg-silver");
+                    break;
+                  case 2:
+                    setBgColor("main-bg-emerald");
+                    break;
+                  case 3:
+                    setBgColor("main-bg-ruby");
+                    break;
+                  default:
+                    setBgColor("main-bg-gold");
+                    break;
+                }
+              }}
+              className="w-[500px]"
             >
               {watches.map((watch) => (
                 <SwiperSlide key={uuidv4()}>
                   <img src={watch} alt="watch" />
                 </SwiperSlide>
               ))}
+              <div
+                className="swiper-button-prev min-h-[75px] min-w-[75px] after:hidden"
+                style={{ left: "0px" }}
+              >
+                <img src={btn_left} alt="<" />
+              </div>
+              <div
+                className="swiper-button-next min-h-[75px] min-w-[75px] after:hidden"
+                style={{ right: "0px" }}
+              >
+                <img src={btn_right} alt=">" />
+              </div>
             </Swiper>
           </div>
         </div>

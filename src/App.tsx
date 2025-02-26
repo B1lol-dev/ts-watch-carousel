@@ -5,13 +5,13 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 
 function App() {
-  const [bgColor, setBgColor] = useState("main-bg-orange");
+  const [bgColor, setBgColor] = useState("main-bg-gold");
 
   return (
-    <div className={`h-screen w-screen ${bgColor}`}>
+    <div className={`h-screen w-screen transition ${bgColor}`}>
       <Header />
       <main>
-        <Hero />
+        <Hero setBgColor={setBgColor} />
       </main>
     </div>
   );

@@ -14,8 +14,17 @@ a {
   text-decoration: inherit;
 }
 
-.main-bg-orange {
+.main-bg-gold {
   background: linear-gradient(105.54deg, #f4a764 -2.93%, #ffdec2 72.14%);
+}
+.main-bg-silver {
+  background: linear-gradient(105.54deg, #adb0b0 -2.93%, #e1e1e1 72.14%);
+}
+.main-bg-emerald {
+  background: linear-gradient(105.54deg, #30a357 -2.93%, #75e39a 72.14%);
+}
+.main-bg-ruby {
+  background: linear-gradient(105.54deg, #f24f4f -2.93%, #ffa895 72.14%);
 }
 
 @theme {
